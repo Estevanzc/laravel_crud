@@ -1,1 +1,1 @@
-<a href="/keepinho">Notes</a>
+<a href="{{route("keep.index")}}">Notes</a>

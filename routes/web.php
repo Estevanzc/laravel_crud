@@ -14,5 +14,6 @@ Route::get("/sub/{n1}/{n2}", [CalcController::class, "minus"]);
 Route::get("/power/{n1}", [CalcController::class, "power"]);
 
 Route::prefix("/keep")->group(function () {
-    Route::get('/', [KeepinhoController::class, "index"]);
+    Route::get('/', [KeepinhoController::class, "index"])->name("keep.index");
+    Route::post('/insert', [KeepinhoController::class, "insert_data"])->name("keep.insert");
 });
