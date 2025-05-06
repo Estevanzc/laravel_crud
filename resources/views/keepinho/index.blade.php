@@ -1,8 +1,12 @@
 @extends('layout/header')
 <body>
     <h1>Home</h1>
-    <div class="flex justify-center items-center gap-x-2">
-        <a href="/keep/insert" class="text-blue-500 border-b-2 border-solid border-[#ffffff] hover:border-blue-500">Inserir</a>
+    <div>
+        @if ($errors->any())
+            @foreach ($errors as $error)
+                <p>{{$error}}</p>
+            @endforeach
+        @endif
     </div>
     <form action="{{route("keep.insert")}}" method="post">
         @csrf
@@ -23,8 +27,8 @@
             <h2>{{$note->title}}</h2>
             <p>{{$note->texto}}</p>
             <div class="py-2 flex justify-center items-center gap-x-2">
-                <a href="/keep/edit" class="py-1 px-5 text-sm font-medium bg-[#f0f0f0] rounded transition-all hover:shadow-2xl">Edit</a>
-                <a href="/keep/delete" class="py-1 px-5 text-sm font-medium bg-[#f0f0f0] rounded transition-all hover:shadow-2xl">Delete</a>
+                <a href="{{ route("keep.edit", $note->id) }}" class="py-1 px-5 text-sm font-medium bg-[#f0f0f0] rounded transition-all hover:shadow-2xl">Edit</a>
+                <a href="{{ route("keep.delete", $note->id) }}" class="py-1 px-5 text-sm font-medium bg-[#f0f0f0] rounded transition-all hover:shadow-2xl">Delete</a>
             </div>
         </div>
         @endforeach
