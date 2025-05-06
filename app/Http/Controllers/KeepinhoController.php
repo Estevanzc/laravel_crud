@@ -26,6 +26,7 @@ class KeepinhoController extends Controller {
         return redirect()->route("keep.index");
     }
     function edit_data(Note $note, Request $request) {
+
         if ($request->isMethod("put")) {
             $note = Note::find($request->id);
             $note->title = $request->title;
@@ -33,6 +34,8 @@ class KeepinhoController extends Controller {
             $note->save();
             return redirect()->route("keep.index");
         }
-        return redirect()->route("keep.edit");
+        return view("keepinho.edit",[
+            "note"=> $note
+        ]);
     }
 }
