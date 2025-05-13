@@ -18,5 +18,5 @@ Route::prefix("/keep")->group(function () {
     Route::post('/insert', [KeepinhoController::class, "insert_data"])->name("keep.insert");
     Route::get('/edit/{note}', [KeepinhoController::class, "edit_data"])->name("keep.edit");
     Route::put('/update', [KeepinhoController::class, "update_data"])->name("keep.update");
-    Route::delete('/delete/{note}', [KeepinhoController::class, "delete_data"])->name("keep.delete");
+    Route::get('/delete/{note}', [KeepinhoController::class, "delete_data"])->name("keep.delete");
 });

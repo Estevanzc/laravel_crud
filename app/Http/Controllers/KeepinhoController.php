@@ -14,11 +14,12 @@ class KeepinhoController extends Controller {
         ]);
     }
     function insert_data(Request $request) {
-        $resquest_data = $request->validate([
+        $request_data = $request->validate([
             "title" => ["required", Rule::unique("notes", "title")],
             "texto" => ["max:5000"],
+            "alert" => ["date"]
         ]);
-        Note::create($resquest_data);
+        Note::create($request_data);
         return redirect()->route("keep.index");
     }
     function delete_data(Note $note) {
@@ -26,16 +27,21 @@ class KeepinhoController extends Controller {
         return redirect()->route("keep.index");
     }
     function edit_data(Note $note, Request $request) {
-
-        if ($request->isMethod("put")) {
-            $note = Note::find($request->id);
-            $note->title = $request->title;
-            $note->texto = $request->texto;
-            $note->save();
-            return redirect()->route("keep.index");
-        }
         return view("keepinho.edit",[
             "note"=> $note
         ]);
+    }
+    function update_data(Request $request) {
+        $request_data = $request->validate([
+            "title" => ["required"],
+            "texto" => ["max:5000"],
+            "alert" => ["date"]
+        ]);
+        $note = Note::find($request->id);
+        $note->title = $request_data["title"];
+        $note->texto = $request_data["texto"];
+        $note->alert = $request_data["alert"];
+        $note->save();
+        return redirect()->route("keep.index");
     }
 }
