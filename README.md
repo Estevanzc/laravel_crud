@@ -64,3 +64,8 @@ Every file endpoint in views must have its name ending with ".blade.php" to allo
             ]
         ]);
     }
+
+### change laravel error lang
+
+    composer require laravel-lang/lang --dev
+    php artisan lang:add pt
