@@ -21,10 +21,13 @@ class NoteRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            "title" => ["required", "min:3"],
-            "texto" => ["max:5000"],
-            "alert" => ["date"]
-        ];
+        if (!$this->isMethod("GET")) {
+            return [
+                "title" => ["required", "min:3"],
+                "texto" => ["max:5000"],
+                "alert" => ["date"]
+            ];
+        }
+        return [];
     }
 }
