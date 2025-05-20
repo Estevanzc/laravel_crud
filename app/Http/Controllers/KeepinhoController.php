@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Note;
+use App\Http\Requests\NoteRequest;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -13,12 +14,8 @@ class KeepinhoController extends Controller {
             "notes" => $notes
         ]);
     }
-    function insert_data(Request $request) {
-        $request_data = $request->validate([
-            "title" => ["required", "min:3", Rule::unique("notes", "title")],
-            "texto" => ["max:5000"],
-            "alert" => ["date"]
-        ]);
+    function insert_data(NoteRequest $request) {
+        $request_data = $request->validated();
         Note::create($request_data);
         return redirect()->route("keep.index");
     }
@@ -31,16 +28,10 @@ class KeepinhoController extends Controller {
             "note"=> $note
         ]);
     }
-    function update_data(Request $request) {
-        $request_data = $request->validate([
-            "title" => ["required", "min:3"],
-            "texto" => ["max:5000"],
-            "alert" => ["date"]
-        ]);
+    function update_data(NoteRequest $request) {
+        $request_data = $request->validated();
         $note = Note::find($request->id);
-        $note->title = $request_data["title"];
-        $note->texto = $request_data["texto"];
-        $note->alert = $request_data["alert"];
+        $note->fill($request_data);
         $note->save();
         return redirect()->route("keep.index");
     }
