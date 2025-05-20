@@ -69,3 +69,9 @@ Every file endpoint in views must have its name ending with ".blade.php" to allo
 
     composer require laravel-lang/lang --dev
     php artisan lang:add pt
+
+### change lang
+
+    composer require lucascudo/laravel-pt-br-localization --dev
+    php artisan lang:publish //extract lang from vendor
+    php artisan vendor:publish --tag=laravel-pt-br-localization

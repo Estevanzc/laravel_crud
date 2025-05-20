@@ -2,25 +2,27 @@
 <body>
     <h1>Home</h1>
     <div>
+        <ul>
         @if ($errors->any())
             @foreach ($errors->all() as $error)
-                <p>{{$error}}</p>
+                <li>{{$error}}</li>
             @endforeach
         @endif
+        </ul>
     </div>
     <form action="{{route("keep.insert")}}" method="post">
         @csrf
         <div>
             <label for="title">Title</label>
-            <input type="text" id="title" name="title" class="border-2 border-solid border-black">
+            <input type="text" id="title" name="title" value="{{ old("title") }}" class="border-2 border-solid border-black">
         </div>
         <div>
             <label for="texto">Text</label>
-            <textarea name="texto" id="texto" cols="30" rows="10" class="border-2 border-solid border-black"></textarea>
+            <textarea name="texto" id="texto" cols="30" rows="10" class="border-2 border-solid border-black">{{ old("texto") }}</textarea>
         </div>
         <div>
             <label for="altert">Alert date</label>
-            <input type="date" id="alert" name="alert" class="border-2 border-solid border-black">
+            <input type="date" id="alert" name="alert" value="{{ old("alert") }}" class="border-2 border-solid border-black">
         </div>
         <button type="submit" class="border-2 border-solid border-black">Submit</button>
     </form>

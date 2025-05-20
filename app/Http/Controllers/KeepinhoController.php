@@ -15,7 +15,7 @@ class KeepinhoController extends Controller {
     }
     function insert_data(Request $request) {
         $request_data = $request->validate([
-            "title" => ["required", Rule::unique("notes", "title")],
+            "title" => ["required", "min:3", Rule::unique("notes", "title")],
             "texto" => ["max:5000"],
             "alert" => ["date"]
         ]);
@@ -33,7 +33,7 @@ class KeepinhoController extends Controller {
     }
     function update_data(Request $request) {
         $request_data = $request->validate([
-            "title" => ["required"],
+            "title" => ["required", "min:3"],
             "texto" => ["max:5000"],
             "alert" => ["date"]
         ]);
