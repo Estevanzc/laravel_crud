@@ -10,6 +10,7 @@
         @endif
         </ul>
     </div>
+    <div><a href="{{ route("keep.trash") }}">Lixeira</a></div>
     <form action="{{route("keep.insert")}}" method="post">
         @csrf
         <div>

@@ -19,7 +19,8 @@ class KeepinhoController extends Controller {
         Note::create($request_data);
         return redirect()->route("keep.index");
     }
-    function delete_data(Note $note) {
+    function delete_data($note) {
+        $note = Note::withTrashed()->find($note);
         $note->delete();
         return redirect()->route("keep.index");
     }
@@ -34,5 +35,18 @@ class KeepinhoController extends Controller {
         $note->fill($request_data);
         $note->save();
         return redirect()->route("keep.index");
+    }
+    function trash() {
+        $notes = Note::onlyTrashed()->get();
+        return view("keepinho/trash", [
+            "notes" => $notes,
+        ]);
+    }
+    function trash_restore($note) {
+        $note = Note::onlyTrashed()->find($note);
+        $note->restore();
+        return redirect()->route("keep.trash")->with([
+            "success" => "Nota apagada",
+        ]);
     }
 }
