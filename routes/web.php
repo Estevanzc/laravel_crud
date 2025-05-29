@@ -15,8 +15,8 @@ Route::get("/sub/{n1}/{n2}", [CalcController::class, "minus"]);
 Route::get("/power/{n1}", [CalcController::class, "power"]);
 
 Route::middleware(["auth"])->group(function () {
+    Route::get('/', [KeepinhoController::class, "index"])->name("keep.index");
     Route::prefix("/keep")->group(function () {
-        Route::get('/', [KeepinhoController::class, "index"])->name("keep.index");
         Route::post('/insert', [KeepinhoController::class, "insert_data"])->name("keep.insert");
         Route::get('/edit/{note}', [KeepinhoController::class, "edit_data"])->name("keep.edit");
         Route::put('/update', [KeepinhoController::class, "update_data"])->name("keep.update");

@@ -7,6 +7,15 @@
     @endif
     </ul>
 </div>
+<div>
+    @if (Auth::check())
+    <p>Olá, {{Auth::user()->name}}</p>
+    <a href="{{route("logout")}}">logout</a>
+    @else
+    <p>Você não está autenticado</p>
+    <a href="{{route("login")}}">login</a>
+    @endif
+</div>
 <form action="{{route("auth.create")}}" method="post">
     @csrf
     <div>
@@ -26,4 +35,14 @@
         <input type="password" id="password_confirm" name="password_confirmation" class="border-2 border-solid border-black">
     </div>
     <button type="submit">Submit</button>
+    <br>
+    <br>
+    <div>
+        Usuários atuais
+        <ul>
+            @foreach ($users as $user)
+            <li>{{$user->name}}</li>
+            @endforeach
+        </ul>
+    </div>
 </form>

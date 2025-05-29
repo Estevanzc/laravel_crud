@@ -12,6 +12,7 @@
     @endif
     </ul>
 </div>
+<a href="{{route("logon")}}">logon</a>
 <form action="{{route("auth.athenticate")}}" method="post">
     @csrf
     <div>

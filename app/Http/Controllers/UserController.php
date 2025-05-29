@@ -14,11 +14,12 @@ class UserController extends Controller {
         return view("login");
     }
     function logon() {
-        return view("logon");
+        $users = User::all();
+        return view("logon", compact(["users"]));
     }
     function logout() {
         Auth::logout();
-        return view("index");
+        return redirect()->route("keep.index");
     }
     function auth_logon(UserRequest $request) {
         $request_data = $request->validated();
