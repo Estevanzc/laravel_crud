@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CalcController;
@@ -32,6 +33,8 @@ Route::middleware(["auth"])->group(function () {
         Route::get('/restore/{note}', [KeepinhoController::class, "trash_restore"])->name("keep.restore");
     });
 });
+
+Route::resource("products", ProductController::class);
 
 Route::get("/soma/{n1}/{n2}", [CalcController::class, "plus"]);
 Route::get("/sub/{n1}/{n2}", [CalcController::class, "minus"]);

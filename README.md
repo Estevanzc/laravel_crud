@@ -27,6 +27,7 @@ Every file endpoint in views must have its name ending with ".blade.php" to allo
     php artisan make:migration create_(table_name - needs to be lowerCase and in plural)_table
     php artisan make:controller PostController //any name you want
     php artisan make:model Post //it will only work if the table name match to the rules right above
+    php artisan make:model Product -cm //will create model, controller and migration based on this name (needs to be singual and and camel_case)
 
 #### how to manually insert data in a table
 ##### user laravel tinker
@@ -75,3 +76,11 @@ Every file endpoint in views must have its name ending with ".blade.php" to allo
     composer require lucascudo/laravel-pt-br-localization --dev
     php artisan lang:publish //extract lang from vendor
     php artisan vendor:publish --tag=laravel-pt-br-localization
+
+
+### breeze
+
+it is a authentication laravel library
+
+    composer require laravel/breeze --dev
+    php artisan breeze:install
