@@ -84,3 +84,13 @@ it is a authentication laravel library
 
     composer require laravel/breeze --dev
     php artisan breeze:install
+
+### policy
+
+    php artisan make:policy MembroPolicy --model=Membro //should be true as default
+
+### generate db key
+
+    composer install
+    php artisan key:generate
+    php artisan migrate --seed

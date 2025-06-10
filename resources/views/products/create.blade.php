@@ -18,9 +18,15 @@
                         </div>
                         <div>
                             <x-input-label for="price" :value="__('price')" />
-                            <x-text-input id="price" class="block mt-1 w-full" type="number" price="price" :value="old('price')" required autofocus autocomplete="price" />
+                            <x-text-input id="price" class="block mt-1 w-full" type="number" name="price" :value="old('price')" required autofocus autocomplete="price" />
                             <x-input-error :messages="$errors->get('price')" class="mt-2" />
                         </div>
+                        <div>
+                            <x-input-label for="description" :value="__('description')" />
+                            <x-text-area id="description" class="block mt-1 w-full" name="description   " required autofocus autocomplete="description">{{old('description')}}</x-text-area>
+                            <x-input-error :messages="$errors->get('description')" class="mt-2" />
+                        </div>
+                        <x-primary-button type="submit">Adicionar</x-primary-button>
                     </form>
                 </div>
             </div>
