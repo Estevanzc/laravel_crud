@@ -10,6 +10,17 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <x-link-button href='{{ route("products.create") }}'>Adicionar Products</x-link-button>
+                    <div class="w-full grid grid-cols-4 gap-x-2 gap-y-2">
+                        @foreach ($products as $product)
+                            <div class="flex justify-center items-center flex-col">
+                                <div class="w-full h-[300px] bg-center bg-cover bg-norepeat" style="background-image: url({{ asset("storage") ."/". (isset($product["photo"]) ? $product["photo"] : "products/default_product.jpg") }})"></div>
+                                <div class="w-full h-1/2">
+                                    <p>Name: {{$product["name"]}}</p>
+                                    <p>Price: {{$product["price"]}}</p>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
