@@ -68,8 +68,10 @@ class CartController extends Controller
         foreach ($cart as $idx => $item) {
             if ($item->id == $product->id) {
                 unset($cart[$idx]);
+                break;
             }
         }
+        $cart = array_values($cart);
         session()->put("user_cart", $cart);
         return redirect()->route("cart.index");
     }
