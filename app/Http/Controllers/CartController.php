@@ -23,7 +23,7 @@ class CartController extends Controller
      */
     public function create(Product $product) {
         $cart = session("user_cart", []);
-        $cart[] = $product;
+        $cart[] = $product->attributesToArray();
         session()->put("user_cart", $cart);
         return redirect()->route("cart.index");
     }
@@ -66,7 +66,7 @@ class CartController extends Controller
     public function destroy(Product $product) {
         $cart = session("user_cart", []);
         foreach ($cart as $idx => $item) {
-            if ($item->id == $product->id) {
+            if ($item["id"] == $product->id) {
                 unset($cart[$idx]);
                 break;
             }

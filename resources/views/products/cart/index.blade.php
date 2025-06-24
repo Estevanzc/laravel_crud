@@ -22,7 +22,7 @@
                                         <p>{{$product["price"]}}</p>
                                     </div>
                                     <div class="w-full flex justify-center items-center pt-2 pb-3">
-                                        <x-link-button href='{{ route("cart.destroy", $product->id) }}'>Remover do carrinho</x-link-button>
+                                        <x-link-button href='{{ route("cart.destroy", $product["id"]) }}'>Remover do carrinho</x-link-button>
                                     </div>
                                 </div>
                             @endforeach
