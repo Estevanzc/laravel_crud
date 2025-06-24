@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
+            Produtos
         </h2>
     </x-slot>
 
@@ -17,6 +17,9 @@
                                 <div class="w-full h-1/2">
                                     <p>Name: {{$product["name"]}}</p>
                                     <p>Price: {{$product["price"]}}</p>
+                                </div>
+                                <div class="w-full h-1/2">
+                                    <x-link-button href='{{ route("cart.create", $product->id) }}'>Adicionar ao Carrinho</x-link-button>
                                 </div>
                             </div>
                         @endforeach

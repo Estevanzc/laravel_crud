@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::prefix("/cart")->group(function() {
+        Route::get('/', [CartController::class, 'index'])->name('cart.index');
+        Route::get('/add/{product}', [CartController::class, 'create'])->name('cart.create');
+        Route::get('/remove/{product}', [CartController::class, 'destroy'])->name('cart.destroy');
+    });
 });
 Route::middleware(["auth"])->group(function () {
     Route::get('/', [KeepinhoController::class, "index"])->name("keep.index");
