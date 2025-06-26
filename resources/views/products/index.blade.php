@@ -13,13 +13,13 @@
                     <div class="w-full grid grid-cols-4 gap-x-2 gap-y-2">
                         @foreach ($products as $product)
                             <div class="flex justify-center items-center flex-col bg-[rgba(255,255,255,0.1)] rounded-lg transition-all cursor-pointer hover:bg-[rgba(255,255,255,0.2)]">
-                                <div class="w-full h-[400px] flex justify-center items-start p-3">
+                                <a href="{{route("product.page", $product->id)}}" class="w-full h-[400px] flex justify-center items-start p-3">
                                     <div class="w-full h-full rounded-lg bg-center bg-cover bg-norepeat" style="background-image: url({{ asset("storage") ."/". (isset($product["photo"]) ? $product["photo"] : "products/default_product.jpg") }})"></div>
-                                </div>
-                                <div class="w-full flex justify-center items-start flex-col px-4">
+                                </a>
+                                <a href="{{route("product.page", $product->id)}}" class="w-full flex justify-center items-start flex-col px-4">
                                     <p>{{$product["name"]}}</p>
                                     <p>{{$product["price"]}}</p>
-                                </div>
+                                </a>
                                 <div class="w-full flex justify-center items-center pt-2 pb-3">
                                     <x-link-button href='{{ route("cart.create", $product->id) }}'>Adicionar ao Carrinho</x-link-button>
                                 </div>

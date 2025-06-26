@@ -27,6 +27,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/add/{product}', [CartController::class, 'create'])->name('cart.create');
         Route::get('/remove/{product}', [CartController::class, 'destroy'])->name('cart.destroy');
     });
+    Route::prefix("/product")->group(function () {
+        Route::get('/page/{product}', [ProductController::class, 'show'])->name('product.page');
+    });
 });
 Route::middleware(["auth"])->group(function () {
     Route::get('/', [KeepinhoController::class, "index"])->name("keep.index");
