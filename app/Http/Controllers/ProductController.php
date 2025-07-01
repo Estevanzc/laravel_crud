@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class ProductController extends Controller {
     public function index(Request $request) {
         $categorie = $request->query("categorie") ?? 0;
-        $products = $categorie ? Product::with("categorie")->where("categorie_id", $categorie)->get() : Product::with("categorie")->get();
+        $products = $categorie ? Categorie::find($categorie)->product : Product::with("categorie")->get();
         return view("products.index", [
             "products" => $products,
             "categories" => Categorie::all(),
