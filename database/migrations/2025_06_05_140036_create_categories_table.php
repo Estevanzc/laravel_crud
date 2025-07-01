@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->decimal("price", 8, 2);
-            $table->text("description");
-            $table->string("photo")->nullable();
-            $table->foreignId("categorie_id")->constrained();
+            $table->enum("name", ["Unkown", "Electronics", "Clothing", "Home & Kitchen", "Beauty & Personal Care", "Sports & Outdoors", "Books", "Toys & Games", "Automotive", "Health & Wellness", "Office Supplies", "Pet Supplies", "Groceries", "Jewelry & Accessories", "Furniture", "Footwear"])->default("Unkown");
             $table->timestamps();
         });
     }
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('categories');
     }
 };

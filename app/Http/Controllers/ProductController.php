@@ -3,13 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
+use App\Models\Categorie;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller {
-    public function index() {
+    public function index(Request $request) {
+        $categorie = $request->query("categorie") ?? 0;
+        $products = $categorie ? Product::with("categorie")->where("categorie_id", $categorie)->get() : Product::with("categorie")->get();
         return view("products.index", [
-            "products" => Product::all(),
+            "products" => $products,
+            "categories" => Categorie::all(),
+            "categorie_id" => $categorie,
         ]);
     }
 
