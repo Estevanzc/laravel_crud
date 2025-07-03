@@ -9,12 +9,9 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller {
     public function index(Request $request) {
-        $categorie = $request->query("categorie") ?? 0;
-        $products = $categorie ? Categorie::find($categorie)->product : Product::with("categorie")->get();
         return view("products.index", [
-            "products" => $products,
+            "products" => Product::all(),
             "categories" => Categorie::all(),
-            "categorie_id" => $categorie,
         ]);
     }
 

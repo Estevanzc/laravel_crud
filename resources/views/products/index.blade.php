@@ -10,17 +10,6 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <x-link-button href='{{ route("products.create") }}'>Adicionar Products</x-link-button>
-                    <form action="{{route("products.index")}}" method="get">
-                        <select name="categorie" id="categorie" class="dark:bg-gray-700">
-                            <option value="0">Todos</option>
-                            @foreach ($categories as $categorie)
-                                <option value="{{$categorie->id}}" @if ($categorie_id == $categorie->id)
-                                    selected
-                                @endif >{{$categorie->name}}</option>
-                            @endforeach
-                        </select>
-                        <button type="submit">Submit</button>
-                    </form>
                     <div class="w-full grid grid-cols-4 gap-x-2 gap-y-2">
                         @foreach ($products as $product)
                             <div class="flex justify-center items-center flex-col bg-[rgba(255,255,255,0.1)] rounded-lg transition-all cursor-pointer hover:bg-[rgba(255,255,255,0.2)]">

@@ -21,7 +21,6 @@ class DatabaseSeeder extends Seeder
         ]);
         $this->call([
             NoteSeeder::class,
-            CategorieSeeder::class,
             ProductSeeder::class,
         ]);
     }

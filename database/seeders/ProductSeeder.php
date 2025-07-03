@@ -18,14 +18,12 @@ class ProductSeeder extends Seeder
                 "price" => "5000",
                 "description" => "kachow",
                 "photo" => "",
-                "categorie_id" => 1,
             ],
             [
                 "name" => "MilkBox",
                 "price" => "100000",
                 "description" => "não contem a vaca vavá",
                 "photo" => "",
-                "categorie_id" => 2,
             ],
         ]);
     }
