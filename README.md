@@ -50,6 +50,7 @@ Every file endpoint in views must have its name ending with ".blade.php" to allo
     php artisan make:seeder NoteSeeder //cria uma seeder da tabela
     php artisan db:seed //seed the db with the seeders data (before making the steps rith bellow)
     php artisan migrate:fresh --seed //restart the db data from scratch and auto seed
+    php artisan db:seed --class=UseSeeder //run a scpecific seeder
 
 #### Seeder data
 
