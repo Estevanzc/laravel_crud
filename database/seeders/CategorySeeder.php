@@ -26,6 +26,15 @@ class CategorySeeder extends Seeder
             [
                 "name" => "teste3",
             ],
+            [
+                "name" => "teste4",
+            ],
+            [
+                "name" => "teste5",
+            ],
+            [
+                "name" => "teste6",
+            ],
         ]);
     }
 }

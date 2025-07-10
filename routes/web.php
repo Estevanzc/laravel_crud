@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,9 @@ Route::middleware('auth')->group(function () {
     });
     Route::prefix("/product")->group(function () {
         Route::get('/page/{product}', [ProductController::class, 'show'])->name('product.page');
+    });
+    Route::prefix("/posts")->group(function() {
+        Route::get('/', [PostController::class, 'index'])->name('post.index');
     });
 });
 Route::middleware(["auth"])->group(function () {

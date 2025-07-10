@@ -17,6 +17,7 @@
                     </x-nav-link>
                     <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">Produtos</x-nav-link>
                     <x-nav-link :href="route('cart.index')" :active="request()->routeIs('cart.index')">Your Cart</x-nav-link>
+                    <x-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">Blog</x-nav-link>
                 </div>
             </div>
 
